@@ -1,4 +1,4 @@
-#Covid19 in Middlesbrough using python to code
+#Figure of CoVid-19 Case in Middlesbrough(Python version)
 #Coded by dxb 05-05-2020
 
 #import numpy
@@ -49,12 +49,15 @@ print(enincrease)
 matplotlib.pyplot.subplot(2,1,1)
 matplotlib.pyplot.plot(cases)
 matplotlib.pyplot.plot(dcases)
-
+matplotlib.pyplot.grid()
 #Daily cases plot
 matplotlib.pyplot.subplot(2,1,2)
 matplotlib.pyplot.plot(increase)
 matplotlib.pyplot.plot(avincrease)
 matplotlib.pyplot.plot(dincrease)
 matplotlib.pyplot.plot(avdincrease)
+figManager = matplotlib.pyplot.get_current_fig_manager()
+figManager.resize(*figManager.window.maxsize())
+matplotlib.pyplot.grid()
 matplotlib.pyplot.show()
 
