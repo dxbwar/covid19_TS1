@@ -49,7 +49,7 @@ plot(xData,cases,'-*b',xData,dcases,'-or')
 grid on
 %title config
 t1 = "米德尔斯堡新冠病毒累计确诊及詹姆斯库克大学医院累计死亡病例";
-t2 = t1 + newline + "Middlesbrough Total Comfirmed Cases of CoVID-19 & Total Dead Cases in the James Cook University Hospital";
+t2 = t1 + newline + "Total Comfirmed Cases of CoVID-19 in Middlesbrough & Total Dead Cases at the James Cook University Hospital";
 title(t2)
 xlabel('日期 Date')
 ylabel('病例数 Cases')
@@ -72,7 +72,7 @@ plot(xData,increase,':*b',xData,avincrease,'-b',xData,dincrease,':or',xData,avdi
 grid on
 %Title config
 t3 = "米德尔斯堡新冠病毒日增确诊及詹姆斯库克大学医院日增死亡病例";
-t4 = t3 + newline + "Middlesbrough Daily Comfirmed Cases of CoVID-19 & Daily Dead Cases in the James Cook University Hospital";
+t4 = t3 + newline + "Daily Comfirmed Cases of CoVID-19 in Middlesbrough & Daily Dead Cases at the James Cook University Hospital";
 title(t4)
 xlabel('日期 Date')
 ylabel('病例数 Cases')
