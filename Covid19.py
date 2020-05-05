@@ -10,11 +10,11 @@ from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 #cases data from the UK government
 cases = [1, 1, 1, 3, 7, 9, 13, 17, 19, 26, 33, 44, 59, 74, 92, 111, 126, 151, 169, 196, 213,\
     235, 237, 258, 274, 291, 302, 325, 346, 354, 367, 394, 407, 413, 427, 451, 472, 481, 496,\
-    509, 509, 541, 554, 559, 566, 582]
+    509, 509, 541, 554, 559, 566, 582, 588]
 #deaths data from NHS
 dcases = [1, 1, 1, 1, 1, 1, 1, 2, 4, 4, 4, 11, 15, 30, 35, 43, 48, 49, 59, 69, 73, 78, 79, 83,\
     83, 100, 106, 122, 126, 134, 134, 134, 141, 151, 157, 157, 166, 166, 166, 172, 178, 180,\
-    185, 189, 189, 189]
+    185, 189, 189, 189, 196]
 
 #Initial
 #Date config
@@ -60,25 +60,32 @@ ax1.legend(loc = 'upper left')
 step1 = 5
 while (max(cases)/17)>step1:
     step1 = step1 + 5
+matplotlib.pyplot.ylim(0, step1*17)
+matplotlib.pyplot.xlim(0, len(cases)-1)
 ax1.yaxis.set_major_locator(MultipleLocator(step1*2))
 ax1.yaxis.set_minor_locator(MultipleLocator(step1))
 ax1.yaxis.grid(True, which='both')
 ax1.xaxis.grid(True)
 
 ax2 = matplotlib.pyplot.subplot(2,1,2)
-matplotlib.pyplot.plot(increase, linewidth='0.5', color='cadetblue', linestyle=':', marker='*', label = "新增确诊    Daily Cases")
-matplotlib.pyplot.plot(avincrease, linewidth='1', color='blue', linestyle='-', label = '确诊5日均值 Average of 5 days Cases')
-matplotlib.pyplot.plot(dincrease, linewidth='1', color='pink', linestyle=':', marker='o', label = '新增死亡    Daily Deaths')
-matplotlib.pyplot.plot(avdincrease, linewidth='1', color='red', linestyle='-', label = '死亡5日均值 Average of 5 days Deaths')
-matplotlib.pyplot.legend(loc = 'upper left')
+ax2.plot(increase, linewidth='0.5', color='cadetblue', linestyle=':', marker='*', label = "新增确诊    Daily Cases")
+ax2.plot(avincrease, linewidth='1', color='blue', linestyle='-', label = '确诊5日均值 Average of 5 days Cases')
+ax2.plot(dincrease, linewidth='1', color='pink', linestyle=':', marker='o', label = '新增死亡    Daily Deaths')
+ax2.plot(avdincrease, linewidth='1', color='red', linestyle='-', label = '死亡5日均值 Average of 5 days Deaths')
+ax2.legend(loc = 'upper left')
 matplotlib.pyplot.title('米德尔斯堡新冠病毒日增确诊及詹姆斯库克大学医院日增死亡病例\n\
     Daily Comfirmed Cases of CoVID-19 in Middlesbrough & Daily Dead Cases at the James Cook University Hospital')
 matplotlib.pyplot.ylabel('病例数 Cases') 
 matplotlib.pyplot.xlabel('天数 Days')
 step2 = 2
-while (max(increase)/17)>step1:
+while (max(increase)/17)>step2:
     step2 = step2 + 2
-ax2.yaxis.set_major_locator(MultipleLocator(step2))
+matplotlib.pyplot.ylim(0, step2*17)
+matplotlib.pyplot.xlim(0, len(increase)-1)
+ax2.yaxis.set_major_locator(MultipleLocator(step2*2))
+ax2.yaxis.set_minor_locator(MultipleLocator(step2))
+ax2.yaxis.grid(True, which='both')
+ax2.xaxis.grid(True)
 matplotlib.pyplot.grid(True)
 figManager = matplotlib.pyplot.get_current_fig_manager()
 figManager.resize(*figManager.window.maxsize())
