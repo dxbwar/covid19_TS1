@@ -1,8 +1,9 @@
 #Figure of CoVid-19 Case in Middlesbrough(Python version)
 #Coded by dxb 05-05-2020
 
-#import numpy
+import numpy
 import matplotlib.pyplot
+from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 #import datetime
 
 #Data source Need to update by day
@@ -48,29 +49,38 @@ for i in range(len(avincrease)):
 matplotlib.pyplot.rcParams['font.sans-serif'] = ['SimHei']    # 用来正常显示中文标签
 matplotlib.pyplot.rcParams['axes.unicode_minus'] = False      # 用来正常显示负号
 #Total cases plot
-matplotlib.pyplot.subplot(2,1,1)
-matplotlib.pyplot.plot(cases, '-*b', label="总确诊数 Total Cases")
-matplotlib.pyplot.plot(dcases, '-or', label="总死亡数 Total Death")
+ax1 = matplotlib.pyplot.subplot(2,1,1)
+ax1.plot(cases, linewidth='1', color='blue', linestyle='-', marker='*', label="总确诊数 Total Cases")
+ax1.plot(dcases, linewidth='1', color='red', linestyle='-', marker='o', label="总死亡数 Total Death")
 matplotlib.pyplot.title('米德尔斯堡新冠病毒累计确诊及詹姆斯库克大学医院累计死亡病例\n\
     Total Comfirmed Cases of CoVID-19 in Middlesbrough & Total Dead Cases at the James Cook University Hospital')
 matplotlib.pyplot.ylabel('病例数 Cases') 
-matplotlib.pyplot.xlabel('日期 Date')
-matplotlib.pyplot.legend(loc = 'upper left')
-matplotlib.pyplot.grid()
+matplotlib.pyplot.xlabel('天数 Days')
+ax1.legend(loc = 'upper left')
+step1 = 5
+while (max(cases)/17)>step1:
+    step1 = step1 + 5
+ax1.yaxis.set_major_locator(MultipleLocator(step1*2))
+ax1.yaxis.set_minor_locator(MultipleLocator(step1))
+ax1.yaxis.grid(True, which='both')
+ax1.xaxis.grid(True)
 
-matplotlib.pyplot.subplot(2,1,2)
-matplotlib.pyplot.plot(increase, ':*b', label = "新增确诊    Daily Cases")
-matplotlib.pyplot.plot(avincrease, '-b', label = '确诊5日均值 Average of 5 days Cases')
-matplotlib.pyplot.plot(dincrease, ':or', label = '新增死亡    Daily Deaths')
-matplotlib.pyplot.plot(avdincrease,'-r', label = '死亡5日均值 Average of 5 days Deaths')
+ax2 = matplotlib.pyplot.subplot(2,1,2)
+matplotlib.pyplot.plot(increase, linewidth='0.5', color='cadetblue', linestyle=':', marker='*', label = "新增确诊    Daily Cases")
+matplotlib.pyplot.plot(avincrease, linewidth='1', color='blue', linestyle='-', label = '确诊5日均值 Average of 5 days Cases')
+matplotlib.pyplot.plot(dincrease, linewidth='1', color='pink', linestyle=':', marker='o', label = '新增死亡    Daily Deaths')
+matplotlib.pyplot.plot(avdincrease, linewidth='1', color='red', linestyle='-', label = '死亡5日均值 Average of 5 days Deaths')
 matplotlib.pyplot.legend(loc = 'upper left')
 matplotlib.pyplot.title('米德尔斯堡新冠病毒日增确诊及詹姆斯库克大学医院日增死亡病例\n\
     Daily Comfirmed Cases of CoVID-19 in Middlesbrough & Daily Dead Cases at the James Cook University Hospital')
 matplotlib.pyplot.ylabel('病例数 Cases') 
-matplotlib.pyplot.xlabel('日期 Date')
-matplotlib.pyplot.grid()
+matplotlib.pyplot.xlabel('天数 Days')
+step2 = 2
+while (max(increase)/17)>step1:
+    step2 = step2 + 2
+ax2.yaxis.set_major_locator(MultipleLocator(step2))
+matplotlib.pyplot.grid(True)
 figManager = matplotlib.pyplot.get_current_fig_manager()
 figManager.resize(*figManager.window.maxsize())
 matplotlib.pyplot.subplots_adjust(left=0.05, right=0.99, top=0.9, bottom=0.08, wspace=0, hspace=0.4)
 matplotlib.pyplot.show()
-
