@@ -7,11 +7,11 @@
 %cases data from the UK government
 cases = [1 1 1 3 7 9 13 17 19 26 33 44 59 74 92 111 126 151 169 196 213 ...
     235 237 258 274 291 302 325 346 354 367 394 407 413 427 451 472 481 ...
-    496 509 509 541 554 559 566 582 588 589 600];
+    496 509 509 541 554 559 566 582 588 589 600 615];
 %deaths data from NHS
 dcases = [1 1 1 1 1 1 1 2 4 4 4 11 15 30 35 43 48 49 59 69 73 78 79 83 ...
     83 100 106 122 126 134 134 134 141 151 157 157 166 166 166 172 178 ...
-    180 185 189 189 189 196 199 199];
+    180 185 189 189 189 196 199 199 204];
 
 %Initial
 %Date config
@@ -87,3 +87,5 @@ set(gca,'xtick',startDate:7:startDate+days);
 datetick('x','mm/dd/yyyy')
 set(gca,'xlim',[startDate,endDate]);
 legend('新增确诊       Daily Cases','确诊5日均值 Average of 5 days Cases','新增死亡       Daily Deaths','死亡5日均值 Average of 5 days Deaths','Location','NorthWest')
+
+saveas(gcf, 'COVID19_TS1.jpg')
