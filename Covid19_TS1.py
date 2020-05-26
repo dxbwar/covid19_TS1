@@ -12,12 +12,12 @@ from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 cases = [1, 1, 1, 3, 7, 9, 13, 17, 19, 26, 33, 44, 59, 74, 92, 111, 126, 151, 169, 196, 213,\
     235, 237, 258, 274, 291, 302, 325, 346, 354, 367, 394, 407, 413, 427, 451, 472, 481, 496,\
     509, 509, 541, 554, 559, 566, 582, 588, 589, 600, 615, 619, 624, 626, 628, 630, 631, 632,\
-    633, 634, 634, 638, 645, 652, 656, 659, 665, 667]
+    633, 634, 634, 638, 645, 652, 656, 659, 665, 667, 668]
 #deaths data from NHS
 dcases = [1, 1, 1, 1, 1, 1, 1, 2, 4, 4, 4, 11, 15, 30, 35, 43, 48, 49, 59, 69, 73, 78, 79, 83,\
     83, 100, 106, 122, 126, 134, 134, 134, 141, 151, 157, 157, 166, 166, 166, 172, 178, 180,\
     185, 189, 189, 189, 196, 199, 199, 204, 204, 204, 204, 210, 213, 214, 215, 216, 216, 216,\
-    217, 220, 221, 223, 223, 223, 223]
+    217, 220, 221, 223, 223, 223, 223,223]
 
 #Initial
 #Date config
@@ -76,7 +76,7 @@ ax2.plot(increase, linewidth='0.5', color='cadetblue', linestyle=':', marker='*'
 ax2.plot(avincrease, linewidth='1', color='blue', linestyle='-', label = '确诊5日均值 Average of 5 days Cases')
 ax2.plot(dincrease, linewidth='1', color='pink', linestyle=':', marker='o', label = '新增死亡    Daily Deaths')
 ax2.plot(avdincrease, linewidth='1', color='red', linestyle='-', label = '死亡5日均值 Average of 5 days Deaths')
-ax2.legend(loc = 'upper left')
+ax2.legend(loc = 'upper right')
 matplotlib.pyplot.title('米德尔斯堡新冠病毒日增确诊及詹姆斯库克大学医院日增死亡病例\n\
     Daily Comfirmed Cases of CoVID-19 in Middlesbrough & Daily Dead Cases at the James Cook University Hospital')
 matplotlib.pyplot.ylabel('病例数 Cases') 
