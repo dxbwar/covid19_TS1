@@ -1,6 +1,7 @@
 #Figure of CoVid-19 Case in Middlesbrough(Python version)
 #Coded by dxb 05-05-2020
-#Update on 06-08-2020
+#Revise on 06-12-2020
+#Update on 06-12-2020
 
 import numpy
 import matplotlib.pyplot
@@ -13,13 +14,13 @@ cases = [1, 1, 1, 3, 7, 9, 13, 17, 19, 26, 33, 44, 59, 74, 92, 111, 126, 151, 16
     235, 237, 258, 274, 291, 302, 325, 346, 354, 367, 394, 407, 413, 427, 451, 472, 481, 496,\
     509, 509, 541, 554, 559, 566, 582, 588, 589, 600, 615, 619, 624, 626, 628, 630, 631, 632,\
     633, 634, 634, 638, 645, 652, 656, 659, 665, 667, 668, 670, 673, 676, 676, 676, 677, 678,\
-    678, 679, 680, 683, 685, 685, 687, 688, 688]
+    678, 679, 680, 683, 685, 685, 687, 688, 688, 689]
 #deaths data from NHS
 dcases = [1, 1, 1, 1, 1, 1, 1, 2, 4, 4, 4, 11, 15, 30, 35, 43, 48, 49, 59, 69, 73, 78, 79, 83,\
     83, 100, 106, 122, 126, 134, 134, 134, 141, 151, 157, 157, 166, 166, 166, 172, 178, 180,\
     185, 189, 189, 189, 196, 199, 199, 204, 204, 204, 204, 210, 213, 214, 215, 216, 216, 216,\
     217, 220, 221, 223, 223, 223, 223, 223, 226, 228, 229, 231, 231, 231, 237, 238, 238, 241,\
-    241, 241, 241, 245, 246, 248]
+    241, 241, 241, 245, 246, 248, 248]
 
 #Initial
 #Date config
@@ -51,7 +52,6 @@ for i in range(len(avincrease)):
     avdincrease[i] = (endincrease[i]+endincrease[i+1]+endincrease[i+2]+endincrease[i+3]+endincrease[i+4]) / 5.0
 
 #Plot
-fig = matplotlib.pyplot.figure()
 matplotlib.pyplot.rcParams['font.sans-serif'] = ['SimHei']    # 用来正常显示中文标签
 matplotlib.pyplot.rcParams['axes.unicode_minus'] = False      # 用来正常显示负号
 #Total cases plot
@@ -97,8 +97,12 @@ matplotlib.pyplot.grid(True)
 figManager = matplotlib.pyplot.get_current_fig_manager()
 figManager.resize(*figManager.window.maxsize())
 matplotlib.pyplot.subplots_adjust(left=0.05, right=0.99, top=0.9, bottom=0.08, wspace=0, hspace=0.4)
-matplotlib.pyplot.show()
 
-# Save figure
-print('savefig...')
+# Show and save figure
+fig = matplotlib.pyplot.gcf()
+fig.show()                                #Ensure png save in right scale
+print('savefig in png...')
+fig.savefig('COVID19_TS1.png')
+matplotlib.pyplot.show()                  #Ensure pdf save in right scale
+print('savefig in pdf...')
 fig.savefig('COVID19_TS1.pdf')
